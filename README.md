@@ -3,7 +3,9 @@
 
 ## Проект "МЕНЕДЖЕР ЗАДАЧ" ##
 
+Переходите и знакомьтесь с <a href="https://hexlet-manager.herokuapp.com/" style="color:#30d5c8;">приложением</a> тут : 
+
 Для ознакомления с ресурсом можно воспользоваться данным профилем:
 
-Login: user@example.com
-Password: user
+<p>Login: user@example.com</p>
+<p>Password: user</p>
