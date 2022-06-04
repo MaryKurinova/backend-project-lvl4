@@ -3,4 +3,4 @@
 
 ## Проект "МЕНЕДЖЕР ЗАДАЧ" ##
 
-Переходите и знакомьтесь с <a href="https://hexlet-manager.herokuapp.com/" style="color:#30d5c8;">приложением</a> тут : 
+Переходите и знакомьтесь с <a href="https://hexlet-manager.herokuapp.com/" style="color:#30d5c8;">приложением</a> тут
