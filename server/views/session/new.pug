@@ -1,0 +1,10 @@
+extends ../layouts/application.pug
+
+block header
+  = t('views.title.signIn')
+
+block content
+  +formFor()(action=route('session') method='post')
+    +input(user, 'email', errors)(type="Email")
+    +input(user, 'password', errors)(type="password")
+    +submit(t('views.manage.submit'))

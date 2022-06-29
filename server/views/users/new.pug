@@ -1,0 +1,9 @@
+extends ../layouts/application.pug
+
+block header
+  = t('views.title.createUser')
+
+block content
+  +formFor()(action=route('users') method='post')
+    include _form.pug
+    +submit(t('views.manage.createUser'))

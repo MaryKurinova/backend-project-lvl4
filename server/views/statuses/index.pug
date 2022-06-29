@@ -1,0 +1,23 @@
+extends ../layouts/application.pug
+block content
+  if statuses.length === 0
+    h3.text-muted= t('views.info.notAnyStatuses')
+    a.nav-link(href=(route('new_status')))= t('views.manage.createStatus')
+  else
+    a.nav-link(href=(route('new_status')))= t('views.manage.createStatus')
+    table.table.table-striped
+      thead
+        tr
+          th= t('views.form.id')
+          th= t('views.form.name')
+          th= t('views.form.createdAt')
+          th
+      tbody
+        each status in statuses
+          tr
+            td= status.id
+            td= status.name
+            td= formatDate(status.createdAt)
+            td.d-md-flex
+              a(class='btn-link btn' href=route('edit_status', { id: status.id }))= t('views.manage.edit')
+              +buttonTo(route('status', { id: status.id }), 'delete')(class='btn-link btn' value=t('views.manage.delete'))

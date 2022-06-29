@@ -1,0 +1,31 @@
+---
+
+root: true
+
+plugins:
+  - jest
+
+env:
+  node: true
+  jest: true
+  browser: true
+
+extends:
+  - "airbnb-base"
+  - "plugin:jest/recommended"
+  - "plugin:jest-playwright/recommended"
+
+parser: babel-eslint
+
+rules:
+  no-console: 0
+  import/extensions: 0
+  new-cap:
+    - error
+    - properties: false
+  no-param-reassign:
+    - error
+    - props: true
+      ignorePropertyModificationsFor:
+        - req
+        - reply

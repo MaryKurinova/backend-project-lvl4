@@ -1,0 +1,24 @@
+extends ../layouts/application.pug
+
+block content
+  if users.length === 0
+    h3.text-muted= t('views.info.notAnyUsers')
+  else
+    table.table.table-striped
+        thead
+          tr
+            th= t('views.form.id')
+            th= t('views.form.fullName')
+            th= t('views.form.email')
+            th= t('views.form.createdAt')
+            th
+        tbody
+          each user in users
+            tr
+              td= user.id
+              td= user.fullName
+              td= user.email
+              td= formatDate(user.createdAt)
+              td.d-md-flex
+                a(class='btn-link btn' href=route('edit_User', { id: user.id }))= t('views.manage.edit')
+                +buttonTo(route('user', { id: user.id }), 'delete')(class='btn-link btn' value=t('views.manage.delete'))

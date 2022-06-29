@@ -1,0 +1,42 @@
+extends ../layouts/application.pug
+block content
+    if tasks.length === 0
+        h3.text-muted= t('views.info.notAnyTasks')
+        a.nav-link(href=route('new_task'))= t('views.manage.createTask')
+    else
+        a.nav-link(href=route('new_task'))= t('views.manage.createTask')
+    .card
+        .card-body.p-2.bg-light
+            +formFor()(action=route('tasks'), method='GET')
+                h4.text-center= t('views.title.filter')
+                .row
+                    +filterSelect('executor', users, 'id', 'fullName', filter)
+                    +filterSelect('label', labels, 'id', 'name', filter)
+                    +filterSelect('status', statuses, 'id', 'name', filter)
+                .mb-3.form-check
+                    input.form-check-input(id='data_isCreatorUser' type='checkbox' name='creatorId', value=currentUserId)
+                    label.form-check-label(for='data_isCreatorUser')= t('views.form.creatByUser')
+                +submit(t('views.manage.show'))
+    table.table.table-striped
+        thead
+            tr
+                th= t('views.form.id')
+                th= t('views.form.name')
+                th= t('views.form.status')
+                th= t('views.form.author')
+                th= t('views.form.executor')
+                th= t('views.form.createdAt')
+                th
+        tbody
+          each task in tasks
+              tr
+                  td= task.id
+                  td
+                      a(href=route('task', {id: task.id}))= task.name
+                  td= task.status.name
+                  td= task.creator.fullName
+                  td= task.executor ? task.executor.fullName : t('views.info.nonExecutor')
+                  td= formatDate(task.createdAt)
+                  td.d-md-flex
+                      a(class='btn-link btn' href=route('edit_task', {id: task.id}))= t('views.manage.edit')
+                      +buttonTo(route('task', {id: task.id}), 'delete')(class='btn-link btn' value=t('views.manage.delete'))
