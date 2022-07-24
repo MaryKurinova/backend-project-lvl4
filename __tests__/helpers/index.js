@@ -9,10 +9,6 @@ export default async (app, data) => {
     },
   });
 
-  // после успешной аутентификации получаем куки из ответа,
-  // они понадобятся для выполнения запросов на маршруты требующие
-  // предварительную аутентификацию
-
   const [sessionCookie] = responseSignIn.cookies;
   const { name, value } = sessionCookie;
   return { [name]: value };
